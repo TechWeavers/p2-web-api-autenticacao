@@ -1,109 +1,36 @@
-#   InkDash
-![FastAPI](https://img.shields.io/badge/FastAPI-005571?style=for-the-badge&logo=fastapi)![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)![MongoDB](https://img.shields.io/badge/MongoDB-%234ea94b.svg?style=for-the-badge&logo=mongodb&logoColor=white)
-> Este é um sistema de gerenciamento interno para estúdios de tatuagem. Nele é possível gerenciar agendamentos, clientes, usuários e materiais.
+Objetivo:
+Desenvolver uma aplicação funcional utilizando Python, FastAPI e MongoDB, que consuma APIs de CEP e Pokémon, implemente estratégias de cache e utilize autenticação JWT.
 
-### Ajustes e melhorias
+Instruções:
 
-O projeto ainda está em desenvolvimento e as próximas atualizações serão voltadas nas seguintes tarefas:
+Desenvolvimento da Aplicação:
+A aplicação envolve o frontend e backend, o frontend deverá realizar o login no backend do Fastapi, depois exibir uma janela/página simples com um formulário de cadastro, mas o cadastro não será digitado pelo usuário, e sim haverá um input que servirá de busca para a api pokemon para buscar os dados pelo nome ou ID, depois dessa primeira busca no mesmo formulário um campo para buscar o CEP na API do viacep e preencher esses campos, após o formulario esta completo o botão salvar, precisa enviar os dados para o bakend fastapi para cadastrar os dados e exibir uma listagem de "pessoas ficticias" pokemons cadastrados, para atualizar dados é necessario um botão para editar e outro para excluir.
+a estrategia de cache é para economizar a requisição as respectivas API caso busque o mesmo CEP ou pokemon
 
-- [ ] Agendamentos (CRUD)
+Autenticação:
+Implementar um sistema de registro e login utilizando JWT.
+Garantir que as rotas de cadastro de dados só sejam acessíveis por usuários autenticados.
 
-## 🚀 Instalando a InkDash
+Consumo de APIs:
+Implementar chamadas às APIs de CEP e Pokémon para obter os dados necessários.
+Consumir a API de CEP para obter informações de endereço.
+Consumir a API de Pokémon para obter informações sobre um Pokémon específico.
 
-Para instalar a Inkdash, siga estas etapas:
+Cadastro de Dados:
+Criar uma rota em FastAPI que receba os dados do Pokémon e do endereço via POST.
+Armazenar os dados recebidos no MongoDB.
 
-1. Após clonar os arquivos em sua máquina, abra o terminal.
-2. Utilize os seguintes comandos para baixar as dependências.
+Cache:
+Implementar uma estratégia de cache para otimizar as chamadas às APIs externas.
+Utilizar uma biblioteca de cache (como aiocache) para armazenar e reutilizar dados (aqui o cache de busca pode ser no frontend ou no backend).
 
-```bash
-pip install -r requirements.txt
-python -m venv fastapi_env
-install fastapi uvicorn
-```
-> [!NOTE]
-> É possível utilizar outro nome ao invés de "fastapi_env".
+Funcionalidades Mínimas
+Sistema de registro e autenticação com JWT.
+Consumo das APIs de CEP e Pokémon.
+Cadastro de dados de Pokémon e endereço, enviados para uma rota FastAPI autenticada.
+Armazenamento dos dados no MongoDB.
+Implementação de cache para otimizar chamadas às APIs.
 
-3. Instale a entensão do MongoDB no vscode
-
-## ☕ Inicializando a Inkdash
-
-1. Abra um terminal específico para cada serviço do sistema (6 no total)
-
-2. Em cada terminal aberto inicialize o fastapi
-
-```bash
-fastapi_env\Scripts\activate
-```
-> [!WARNING]
-> Caso tenha mudado o nome da pasta ao baixar as depêndencias utilize o novo nome ao invés de "fastapi_env".
-
-3. Digite cada comando a seguir num terminal diferente.
-
-```bash
-uvicorn routes.loginRoute:app --reload --port 8000
-uvicorn routes.userRoute:app --reload --port 8001
-uvicorn routes.redefinicaoRoute:app --reload --port 8002
-uvicorn routes.clienteRoute:app --reload --port 8003
-uvicorn routes.materialRoute:app --reload --port 8004
-uvicorn routes.agendaRoute:app --reload --port 8005
-
-```
-### Inicializando o Banco
-
-1. Para o banco de dados inicie o MongoDB na seginte porta:
-
-```bash
-mongodb://localhost:27017
-```
-2. Crie um banco chamando "streetwise_db"
-3. Dentro do banco crie as collection: "users", "agendamentos", "cliente" e "material"
-
-> [!TIP]
-> Você pode utilizar as rotas tanto usando o nosso front-end quando utilizado alguma extensão como postman ou thunder
-
-## 🤝 Colaboradores
-
-<table>
-  <tr>
-    <td align="center">
-      <a href="#" title="defina o titulo do link">
-        <img src="https://avatars.githubusercontent.com/u/128440479?s=400&u=a308ecb320d3bc000c31194508b884eadbb01366&v=4" width="100px;" alt="Foto do Brielalmeida no GitHub"/><br>
-        <sub>
-          <b>Brielalmeida</b>
-        </sub>
-      </a>
-    </td>
-    <td align="center">
-      <a href="#" title="defina o titulo do link">
-        <img src="https://avatars.githubusercontent.com/u/99226416?v=4" width="100px;" alt="Foto do João Pedro de Lima"/><br>
-        <sub>
-          <b>João Pedro de Lima</b>
-        </sub>
-      </a>
-    </td>
-    <td align="center">
-      <a href="#" title="defina o titulo do link">
-        <img src="https://avatars.githubusercontent.com/u/116198015?v=4" width="100px;" alt="Foto do Kaunang"/><br>
-        <sub>
-          <b>Kauang☯</b>
-        </sub>
-      </a>
-    </td>
-    <td align="center">
-      <a href="#" title="defina o titulo do link">
-        <img src="https://avatars.githubusercontent.com/u/107219109?v=4" width="100px;" alt="Foto do Hideaki Fukami"/><br>
-        <sub>
-          <b>Hideaki Fukami</b>
-        </sub>
-      </a>
-    </td>
-    <td align="center">
-      <a href="#" title="defina o titulo do link">
-        <img src="https://avatars.githubusercontent.com/u/131377083?v=4" width="100px;" alt="Foto do HenryPilotinho"/><br>
-        <sub>
-          <b>HenryPilotinho</b>
-        </sub>
-      </a>
-    </td>
-  </tr>
-</table>
+Funcionalidades desenvolvidas até agora:
+- Persistência com banco de dados MongoDB
+- Autenticação com JWT
