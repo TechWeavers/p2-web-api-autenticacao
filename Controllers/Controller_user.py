@@ -7,7 +7,7 @@ import logging
 
 # Configurações de conexão com o MongoDB
 connection_string = "mongodb://localhost:27017/"
-database_name = "streetwise_db"
+database_name = "pokecpf_db"
 collection_name = "users"
 
 # Criando uma conexão com o MongoDB
