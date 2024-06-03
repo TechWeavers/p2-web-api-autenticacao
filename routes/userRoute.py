@@ -26,9 +26,9 @@ async def listarUsuarios(Authorization: Annotated[Header, Depends(validar_token)
      print(Authorization)
      return ControllerUser.getAllUsers()
 
-@userAPI.get("/buscar-usuario/{email}", tags=["usuarios"]) 
-async def buscarUsuario(email:str, Authorization: Annotated[Header, Depends(validar_token)]):
-     return ControllerUser.getUser(email)
+@userAPI.get("/buscar-usuario/{username}", tags=["usuarios"]) 
+async def buscarUsuario(username:str, Authorization: Annotated[Header, Depends(validar_token)]):
+     return ControllerUser.getUser(username)
 
 @userAPI.get("/editar-usuario/{email}", tags=["usuarios"])
 async def editarUsuario(email:str, Authorization: Annotated[Header, Depends(validar_token)]):
@@ -36,11 +36,11 @@ async def editarUsuario(email:str, Authorization: Annotated[Header, Depends(vali
      return user # para carregar os dados do usuário encontrado na página de atualizar dados
 
 @userAPI.patch("/atualizar-usuario/{email}", tags=["usuarios"]) 
-async def atualizarUsuario(user:User, email ,Authorization: Annotated[Header, Depends(validar_token)]):
-     return ControllerUser.updateUser(dict(user), email)
+async def atualizarUsuario(user:User, username ,Authorization: Annotated[Header, Depends(validar_token)]):
+     return ControllerUser.updateUser(dict(user), username)
 
-@userAPI.delete("/deletar-usuario/{email}", tags=["usuarios"])
-async def excluirUsuarios(email:str, Authorization: Annotated[Header, Depends(validar_token)]):
-     return ControllerUser.deleteUser(email,)
+@userAPI.delete("/deletar-usuario/{username}", tags=["usuarios"])
+async def excluirUsuarios(username:str, Authorization: Annotated[Header, Depends(validar_token)]):
+     return ControllerUser.deleteUser(username)
 
 app.include_router(userAPI)

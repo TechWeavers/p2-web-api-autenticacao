@@ -55,9 +55,9 @@ class ControllerUser:
          raise Exceptions.erro_manipular_usuario()
 
     @staticmethod
-    def getUser(email):
+    def getUser(username):
         try:
-            users = collection.find({"email": email})
+            users = collection.find({"username": username})
             print(users)
             if not users:
                raise Exceptions.erro_manipular_usuario()
@@ -135,9 +135,9 @@ class ControllerUser:
           raise HTTPException(status_code=500, detail="Erro interno ao atualizar a senha do usuário")
 
     @staticmethod
-    def deleteUser(email):
+    def deleteUser(username):
       try:
-        query  = {"email":email}
+        query  = {"username":username}
         if not query:
            raise Exceptions.erro_manipular_usuario()
         result = collection.delete_one(query)
