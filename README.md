@@ -1,36 +1,66 @@
-Objetivo:
-Desenvolver uma aplicação funcional utilizando Python, FastAPI e MongoDB, que consuma APIs de CEP e Pokémon, implemente estratégias de cache e utilize autenticação JWT.
+# <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Pok%C3%A9_Ball_icon.svg/512px-Pok%C3%A9_Ball_icon.svg.png?20161023215848" width="32" height="32" alt="Pokebola"> PokeCEP 
+![FastAPI](https://img.shields.io/badge/FastAPI-005571?style=for-the-badge&logo=fastapi)![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)![MongoDB](https://img.shields.io/badge/MongoDB-%234ea94b.svg?style=for-the-badge&logo=mongodb&logoColor=white)
+> A aplicação permite login, busca de dados de Pokémon e endereço via APIs, cadastro e listagem no backend FastAPI, com opções de editar e excluir, e usa cache para reduzir requisições repetidas.
 
-Instruções:
+## 🚀 Instalando a PokeCEP
 
-Desenvolvimento da Aplicação:
-A aplicação envolve o frontend e backend, o frontend deverá realizar o login no backend do Fastapi, depois exibir uma janela/página simples com um formulário de cadastro, mas o cadastro não será digitado pelo usuário, e sim haverá um input que servirá de busca para a api pokemon para buscar os dados pelo nome ou ID, depois dessa primeira busca no mesmo formulário um campo para buscar o CEP na API do viacep e preencher esses campos, após o formulario esta completo o botão salvar, precisa enviar os dados para o bakend fastapi para cadastrar os dados e exibir uma listagem de "pessoas ficticias" pokemons cadastrados, para atualizar dados é necessario um botão para editar e outro para excluir.
-a estrategia de cache é para economizar a requisição as respectivas API caso busque o mesmo CEP ou pokemon
+Para instalar a Inkdash, siga estas etapas:
 
-Autenticação:
-Implementar um sistema de registro e login utilizando JWT.
-Garantir que as rotas de cadastro de dados só sejam acessíveis por usuários autenticados.
+1. Após clonar os arquivos em sua máquina, abra o terminal.
+2. Utilize os seguintes comandos para baixar as dependências.
 
-Consumo de APIs:
-Implementar chamadas às APIs de CEP e Pokémon para obter os dados necessários.
-Consumir a API de CEP para obter informações de endereço.
-Consumir a API de Pokémon para obter informações sobre um Pokémon específico.
+```bash
+pip install -r requirements.txt
+python -m venv fastapi_env
+install fastapi uvicorn
+```
+> [!NOTE]
+> É possível utilizar outro nome ao invés de "fastapi_env".
 
-Cadastro de Dados:
-Criar uma rota em FastAPI que receba os dados do Pokémon e do endereço via POST.
-Armazenar os dados recebidos no MongoDB.
+3. Instale a extensão do MongoDB no vscode
 
-Cache:
-Implementar uma estratégia de cache para otimizar as chamadas às APIs externas.
-Utilizar uma biblioteca de cache (como aiocache) para armazenar e reutilizar dados (aqui o cache de busca pode ser no frontend ou no backend).
+## ☕ Inicializando o back
 
-Funcionalidades Mínimas
-Sistema de registro e autenticação com JWT.
-Consumo das APIs de CEP e Pokémon.
-Cadastro de dados de Pokémon e endereço, enviados para uma rota FastAPI autenticada.
-Armazenamento dos dados no MongoDB.
-Implementação de cache para otimizar chamadas às APIs.
+1. Abra um terminal específico para cada serviço do sistema (2 no total)
 
-Funcionalidades desenvolvidas até agora:
-- Persistência com banco de dados MongoDB
-- Autenticação com JWT
+2. Em cada terminal aberto inicialize o fastapi
+
+```bash
+fastapi_env\Scripts\activate
+```
+> [!WARNING]
+> Caso tenha mudado o nome da pasta ao baixar as depêndencias utilize o novo nome ao invés de "fastapi_env".
+
+3. Digite cada comando a seguir num terminal diferente.
+
+```bash
+uvicorn routes.loginRoute:app --reload --port 8000
+uvicorn routes.userRoute:app --reload --port 8001
+
+```
+
+### Inicializando o front
+
+1. Abra um terminal na pasta "front":
+
+2. Instale as depêndencias usando:"
+
+```bash
+npm install
+```
+
+3. Inicialize utilizando:
+```bash
+npm start
+```
+
+### Inicializando o Banco
+
+1. Para o banco de dados inicie o MongoDB na seginte porta:
+
+```bash
+mongodb://localhost:27017
+```
+2. Crie um banco chamando "pokcafe_db"
+3. Dentro do banco crie as collection: "users"
+
