@@ -30,6 +30,13 @@ function NovoUsuarioForm() {
       await axios.post('http://localhost:8001/novo-usuario', {
         username,
         password,
+        pokename,
+        pokeid,
+        poketype,
+        cep,
+        logradouro,
+        bairro,
+        estado
       }, auth);
 
       Swal.fire({
@@ -41,7 +48,7 @@ function NovoUsuarioForm() {
 
       setUsername('');
       setPassword('');
-      navigate('/listar-usuario');
+      navigate('/listar-usuarios');
     } catch (error) {
       console.log(error);
       Swal.fire({

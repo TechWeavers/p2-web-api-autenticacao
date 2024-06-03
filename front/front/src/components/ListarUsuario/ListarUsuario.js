@@ -201,8 +201,8 @@ function ListarUsuarioTable() {
                                     {users.map(user => (
                                         <tr key={user._id}>
                                             <td className="bg-transparent text-center">{user.username}</td>
-                                            <td className="bg-transparent text-center">{user.pokemon}</td>
-                                            <td className="bg-transparent text-center">{user.tipo}</td>
+                                            <td className="bg-transparent text-center">{user.pokename}</td>
+                                            <td className="bg-transparent text-center">{user.poketype}</td>
                                             <td className="bg-transparent text-center">{user.cep}</td>
                                             <td className="bg-transparent text-center">{user.logradouro}</td>
                                             <td className="text-center bg-transparent d-flex justify-content-evenly">

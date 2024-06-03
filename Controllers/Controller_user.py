@@ -7,7 +7,7 @@ import logging
 
 # Configurações de conexão com o MongoDB
 connection_string = "mongodb://localhost:27017/"
-database_name = "pokecpf_db"
+database_name = "pokecep_db"
 collection_name = "users"
 
 # Criando uma conexão com o MongoDB
@@ -21,7 +21,7 @@ class ControllerUser:
     @staticmethod
     def insertUser(user:User)->dict:
       try:
-        existingUser = collection.find_one({"email":user.email})
+        existingUser = collection.find_one({"username":user.username})
         if existingUser :
           raise Exceptions.usuario_existente()
   
