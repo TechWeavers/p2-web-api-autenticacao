@@ -31,8 +31,7 @@ function Login() {
                 title: error.response.data.detail,
                 text: "",
                 icon: "error",
-                confirmButtonColor: "#FFB800",
-                iconColor: "#ffb800"
+                confirmButtonColor: "#0d6efd"
               });
             } 
         }

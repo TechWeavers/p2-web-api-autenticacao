@@ -4,7 +4,7 @@ from services.Exceptions import Exceptions
 
 # Configurações de conexão com o MongoDB
 connection_string = "mongodb://localhost:27017/"
-database_name = "streetwise_db"
+database_name = "pokecep_db"
 collection_name = "users"
 
 # Criando uma conexão com o MongoDB
@@ -15,9 +15,9 @@ class Authenticator:
     def __init__(self):
        pass
 
-    def authenticate_user(self,email:str, password:str): # autenticar e retornar um usuário
+    def authenticate_user(self,username:str, password:str): # autenticar e retornar um usuário
         try:
-            user = self.get_user(email, password)
+            user = self.get_user(username, password)
             if not user:
                 raise Exceptions.user_senha_incorretos()
             print("Achou o usuário")
@@ -30,18 +30,26 @@ class Authenticator:
             raise Exceptions.user_senha_incorretos()
         
 
-    # esta função pesquisa um usuário no banco por email e password (encriptado)
-    def get_user (self,email: str, password:str):
+    # esta função pesquisa um usuário no banco por username e password (encriptado)
+    def get_user (self,username: str, password:str):
         senha_criptografada = hashlib.sha256(password.encode()).hexdigest()
-        user = collection.find_one({"email":email, "password":senha_criptografada})
-        print(email)
-        print(password)
+    
+        # Impressões para debug
+        print(f"Username: {username}")
+        print(f"Password: {password}")
+        print(f"Senha Criptografada: {senha_criptografada}")
+        
+        # Buscar o usuário
+        user = collection.find_one({"username": username, "password": senha_criptografada})
+        
+        print(f"Usuário encontrado: {user}")
+        
         if user:
             user['_id'] = str(user['_id'])  # Convertendo o ObjectId para string
             return user
         else:
-            print("usuario nao localizado")
-            return False
+            print("Usuário não localizado")
+        return False
         
     @staticmethod
     def verificar_senha_encriptada(senha_armazenada:str,password:str) -> bool:

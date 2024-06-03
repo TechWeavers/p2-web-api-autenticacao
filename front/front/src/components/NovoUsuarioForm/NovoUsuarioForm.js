@@ -42,8 +42,7 @@ function NovoUsuarioForm() {
       Swal.fire({
         title: "Usuário cadastrado com sucesso!",
         icon: "success",
-        confirmButtonColor: "#FFB800",
-        iconColor: "#ffb800"
+        confirmButtonColor: "#0d6efd"
       });
 
       setUsername('');
@@ -55,8 +54,7 @@ function NovoUsuarioForm() {
         title: "Erro ao cadastrar o usuário",
         text: "Opa, erro ao cadastrar o usuário",
         icon: "error",
-        confirmButtonColor: "#FFB800",
-        iconColor: "#ffb800"
+        confirmButtonColor: "#0d6efd"
       });
     }
   };
@@ -74,8 +72,7 @@ function NovoUsuarioForm() {
         title: "Erro ao buscar Pokémon",
         text: "Não foi possível encontrar o Pokémon",
         icon: "error",
-        confirmButtonColor: "#FFB800",
-        iconColor: "#ffb800"
+        confirmButtonColor: "#0d6efd"
       });
     }
   };
@@ -93,8 +90,7 @@ function NovoUsuarioForm() {
         title: "Erro ao buscar endereço",
         text: "Não foi possível encontrar o endereço para o CEP informado",
         icon: "error",
-        confirmButtonColor: "#FFB800",
-        iconColor: "#ffb800"
+        confirmButtonColor: "#0d6efd"
       });
     }
   };

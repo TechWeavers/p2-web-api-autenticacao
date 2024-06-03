@@ -62,8 +62,7 @@ function ListarUsuarioTable() {
                     title: "Erro ao atualizar usuário",
                     text: err.response.data.detail,
                     icon: "error",
-                    confirmButtonColor: "#FFB800",
-                    iconColor: "#ffb800"
+                    confirmButtonColor: "#0d6efd"
                 });
             });
     };
@@ -76,8 +75,7 @@ function ListarUsuarioTable() {
                     title: "Atualizado com sucesso!",
                     text: "As informações do usuário foram atualizadas",
                     icon: "success",
-                    confirmButtonColor: "#FFB800",
-                    iconColor: "#ffb800"
+                    confirmButtonColor: "#0d6efd"
                 });
                 fetchUsers();
                 setUsernameAtual("");
@@ -89,8 +87,7 @@ function ListarUsuarioTable() {
                     title: "Erro em atualizar usuário",
                     text: err.response.data.detail,
                     icon: "error",
-                    confirmButtonColor: "#FFB800",
-                    iconColor: "#ffb800"
+                    confirmButtonColor: "#0d6efd"
                 });
             });
     };
@@ -102,11 +99,10 @@ function ListarUsuarioTable() {
             html: "Não será possível recuperar os dados depois",
             icon: 'warning',
             showCancelButton: true,
-            confirmButtonColor: '#ffb800',
+            confirmButtonColor: '#0d6efd',
             cancelButtonColor: '#d33',
             confirmButtonText: 'Sim, deletar!',
             cancelButtonText: 'Cancelar',
-            iconColor: "#ffb800"
         }).then((result) => {
             if (result.isConfirmed) {
                 handleDeleteConfirmed(user.username);
@@ -122,8 +118,7 @@ function ListarUsuarioTable() {
                 title: 'Usuário deletado com sucesso!',
                 html: "",
                 icon: 'success',
-                iconColor: "#ffb800",
-                confirmButtonColor: "#FFB800"
+                confirmButtonColor: "#0d6efd"
             })
             fetchUsers();
         })
@@ -133,8 +128,7 @@ function ListarUsuarioTable() {
                 title: "Erro ao atualizar usuário",
                 text: err.response.data.detail,
                 icon: "error",
-                confirmButtonColor: "#FFB800",
-                iconColor: "#ffb800"
+                confirmButtonColor: "#0d6efd"
             });
         });
     };
@@ -147,8 +141,7 @@ function ListarUsuarioTable() {
                     title: 'Nenhum usuário encontrado',
                     text: 'Nenhum usuário corresponde à sua busca.',
                     icon: 'info',
-                    confirmButtonColor: '#FFB800',
-                    iconColor: '#ffb800'
+                    confirmButtonColor: '#0d6efd'
                 });
             } else {
                 setUsers(response.data);

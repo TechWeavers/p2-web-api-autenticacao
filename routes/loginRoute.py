@@ -24,24 +24,8 @@ async def validar_token(Authorization: Header= Depends(oauth2_scheme) ):
     
     print(Authorization)
     return LoginController.retornar_token(Authorization)
-    
-@app.get("/validar-token-admin", tags=["login"])
-async def validar_token_admin(Authorization: Header= Depends(oauth2_scheme) ):
-   return LoginController.retornar_token_admin(Authorization)
-
-@app.get("/tipo-usuario/{token}", tags=["login"])
-async def retornar_tipo_usuario(token:str):#Authorization: Annotated[str, Header()]
-    return LoginController.tipo_token(token)
    
 @app.post("/login", tags=["login"])
 async def login_for_access_token(user_data: UserLogin) :
     controller = LoginController()
-    return controller.login(user_data.email, user_data.password)
-
-
-
-# rota teste para autenticação
-@app.get("/produto")
-async def obterProduto(Authorization: Annotated[Header, Depends(validar_token)]):
-    print(Authorization)
-    return {"produto": {"nome": "mouse", "preço": 200,"token":Authorization}}
+    return controller.login(user_data.username, user_data.password)

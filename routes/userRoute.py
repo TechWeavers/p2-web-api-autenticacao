@@ -1,5 +1,5 @@
 from fastapi import APIRouter, FastAPI, Depends,Header
-from routes.loginRoute import validar_token,validar_token_admin
+from routes.loginRoute import validar_token
 from typing import Annotated
 from fastapi.middleware.cors import CORSMiddleware
 from models.userModel import User
@@ -18,7 +18,7 @@ app.add_middleware(
 )
 
 @userAPI.post("/novo-usuario", tags=["usuarios"])
-async def createUser(user:User): #, Authorization: Annotated[Header, Depends(validar_token_admin)]
+async def createUser(user:User): #
      return ControllerUser.insertUser(user)
 
 @userAPI.get("/listar-usuarios", tags=["usuarios"])
@@ -30,12 +30,12 @@ async def listarUsuarios(Authorization: Annotated[Header, Depends(validar_token)
 async def buscarUsuario(username:str, Authorization: Annotated[Header, Depends(validar_token)]):
      return ControllerUser.getUser(username)
 
-@userAPI.get("/editar-usuario/{email}", tags=["usuarios"])
-async def editarUsuario(email:str, Authorization: Annotated[Header, Depends(validar_token)]):
-     user = ControllerUser.getUser(email)
+@userAPI.get("/editar-usuario/{username}", tags=["usuarios"])
+async def editarUsuario(username:str, Authorization: Annotated[Header, Depends(validar_token)]):
+     user = ControllerUser.getUser(username)
      return user # para carregar os dados do usuário encontrado na página de atualizar dados
 
-@userAPI.patch("/atualizar-usuario/{email}", tags=["usuarios"]) 
+@userAPI.patch("/atualizar-usuario/{username}", tags=["usuarios"]) 
 async def atualizarUsuario(user:User, username ,Authorization: Annotated[Header, Depends(validar_token)]):
      return ControllerUser.updateUser(dict(user), username)
 
