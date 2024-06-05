@@ -37,7 +37,7 @@ function Navbar() {
                             <Link to="/listar-usuarios" className="nav-link">Listar</Link>
                         </li>
                     </ul>
-                    <button id="logoutButton" onClick={logout}>Logout</button>
+                    <button id="logoutButton" className="btn btn-primary ms-md-2" onClick={logout}>Sair</button>
                 </div>
 
             </div>
