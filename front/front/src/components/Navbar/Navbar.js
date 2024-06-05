@@ -4,6 +4,15 @@ import { Link } from 'react-router-dom'; // Certifique-se de importar o Link se 
 
 function Navbar() {
 
+    function logout(){
+        document.getElementById('logoutButton').addEventListener('click', function() {
+            // Remover o item 'token' do localStorage
+            localStorage.removeItem('token');
+            // Redirecionar para a página de login ou atualizar a página
+            window.location.href = '/'
+        });
+    }
+
     return (
         <nav className="navbar navbar-expand-md bg-dark py-3" data-bs-theme="dark">
             <div className="container">
@@ -28,7 +37,7 @@ function Navbar() {
                             <Link to="/listar-usuarios" className="nav-link">Listar</Link>
                         </li>
                     </ul>
-                    <a className="btn btn-primary ms-md-2" role="button" href="/">Sair</a>
+                    <button id="logoutButton" onClick={logout}>Logout</button>
                 </div>
 
             </div>
